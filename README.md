@@ -1,4 +1,4 @@
-# Fib App
+# Fibonacci Generator
 
 #### By Abel Trotter
 
