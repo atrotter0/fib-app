@@ -26,6 +26,7 @@ A simple React app that retrieves the values of the Fibonacci sequence up to an 
   * go get -u github.com/gin-gonic/gin
   * go get -u github.com/gin-gonic/contrib/static
   * go get -u github.com/itsjamie/gin-cors
+* Run `go run main.go` from `server/fib-app-server` to start the server on localhost:8080
 
 ## Contribution Requirements
 
