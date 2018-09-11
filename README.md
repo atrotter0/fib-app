@@ -4,7 +4,7 @@
 
 ## Description
 
-A simple React app that retrieves the values of the Fibonacci sequence up to an inputted value from an external API.
+A simple React app that retrieves the values of the Fibonacci sequence up to an inputted value.
 
 ## User Stories
 
