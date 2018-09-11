@@ -31,10 +31,10 @@ class FibGenerator extends React.Component {
   makeFibonacciRequest = (number) => {
     return new Promise((resolve,reject) => {
       const request = new XMLHttpRequest();
-      request.open('GET', `http://localhost:8080/fibonacci/${number}`, true);
+      request.open('GET', `http://localhost:8080/api/fibonacci/${number}`, true);
       request.onload = function() {
         if(request.status === 200) {
-          const results = JSON.parse(request.response);
+          const results = JSON.stringify(request.response);
           resolve(results);
         } else {
           reject(request.statusText);
