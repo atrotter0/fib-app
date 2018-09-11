@@ -12,7 +12,7 @@ func main() {
   router := gin.Default()
 
   // Serve frontend static files
-  router.Use(static.Serve("/", static.LocalFile("./views/js", true)))
+  router.Use(static.Serve("/", static.LocalFile("./build/", true)))
   router.Use(cors.Middleware(cors.Config{
     Origins:        "*",
     Methods:        "GET, PUT, POST, DELETE",

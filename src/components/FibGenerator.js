@@ -11,7 +11,6 @@ class FibGenerator extends React.Component {
       resultsVisible: false,
       fibResults: 0
     }
-    this.handleResultsVisible = this.handleResultsVisible.bind(this);
   }
 
   getFibonacci = (e) => {
@@ -21,8 +20,8 @@ class FibGenerator extends React.Component {
     let getFibonacciPromise = this.makeFibonacciRequest(input);
 
     getFibonacciPromise.then((response) => {
-      this.handleUpdateResults(response);
-      this.handleResultsVisible();
+      this.updateResults(response);
+      this.displayResults();
     }, (error) => {
       //display error
     });
@@ -44,11 +43,11 @@ class FibGenerator extends React.Component {
     });
   }
 
-  handleResultsVisible = () => {
+  displayResuts = () => {
     this.setState(() => ({resultsVisible: true}))
   }
 
-  handleUpdateResults = (response) => {
+  updateResults = (response) => {
     const parsedResponse = JSON.parse(response);
     this.setState(() => ({fibResults: parsedResponse}));
   }
