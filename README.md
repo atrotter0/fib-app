@@ -20,6 +20,13 @@ A simple React app that retrieves the values of the Fibonacci sequence up to an 
 * `yarn build` bundles the app into static files for production
 * `yarn test` starts the test runner
 
+## Server setup
+
+* Run the following commands to install go dependencies:
+  * go get -u github.com/gin-gonic/gin
+  * go get -u github.com/gin-gonic/contrib/static
+  * go get -u github.com/itsjamie/gin-cors
+
 ## Contribution Requirements
 
 1. Clone the repo
