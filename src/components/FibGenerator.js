@@ -8,13 +8,51 @@ class FibGenerator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultsVisible: false
+      resultsVisible: false,
+      fibResults: 0
     }
     this.handleResultsVisible = this.handleResultsVisible.bind(this);
   }
+
+  getFibonacci = (e) => {
+    e.preventDefault();
+
+    const input = e.target.elements.fibInput.value;
+    let getFibonacciPromise = this.makeFibonacciRequest(input);
+
+    getFibonacciPromise.then((response) => {
+      this.handleUpdateResults(response);
+      this.handleResultsVisible();
+    }, (error) => {
+      //display error
+    });
+  }
+
+  makeFibonacciRequest = (number) => {
+    return new Promise((resolve,reject) => {
+      const request = new XMLHttpRequest();
+      request.open('GET', `http://localhost:8080/fibonacci/${number}`, true);
+      request.onload = function() {
+        if(request.status === 200) {
+          const results = JSON.parse(request.response);
+          resolve(results);
+        } else {
+          reject(request.statusText);
+        }
+      }
+      request.send();
+    });
+  }
+
   handleResultsVisible = () => {
     this.setState(() => ({resultsVisible: true}))
   }
+
+  handleUpdateResults = (response) => {
+    const parsedResponse = JSON.parse(response);
+    this.setState(() => ({fibResults: parsedResponse}));
+  }
+
   render() {
     const paperStyles = {
       width: '50%',
@@ -29,20 +67,22 @@ class FibGenerator extends React.Component {
     }
     return(
       <div>
-        <Paper style={paperStyles}>
-          <InputLabel htmlFor='fib-input'>
-            Enter a number:
-          </InputLabel><br/>
-          <Input type='number' id='fib-input' /><br/>
-          <Button variant='contained' color='primary' style={buttonStyles} onClick={this.handleResultsVisible}>
-            Generate
-          </Button>
-          {this.state.resultsVisible && (
-            <div>
-              <p>Put results here!</p>
-            </div>
-          )}
-        </Paper>
+        <form onSubmit={this.getFibonacci}>
+          <Paper style={paperStyles}>
+            <InputLabel htmlFor='fib-input'>
+              Enter a number:
+            </InputLabel><br/>
+            <Input type='number' id='fibInput' name='fibInput' /><br/>
+            <Button type='submit' variant='contained' color='primary' style={buttonStyles}>
+              Generate
+            </Button>
+            {this.state.resultsVisible && (
+              <div>
+                <p>{this.state.fibResults}</p>
+              </div>
+            )}
+          </Paper>
+        </form>
       </div>
     );
   }
