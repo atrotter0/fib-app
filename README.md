@@ -15,18 +15,9 @@ A simple React app that retrieves the values of the Fibonacci sequence up to an 
 
 * Install Node.js
 * Clone the repo
-* `yarn` installs dependencies
-* `yarn start` starts the development server on localhost:3000
-* `yarn build` bundles the app into static files for production
-* `yarn test` starts the test runner
-
-## Server setup
-
-* Run the following commands to install go dependencies:
-  * go get -u github.com/gin-gonic/gin
-  * go get -u github.com/gin-gonic/contrib/static
-  * go get -u github.com/itsjamie/gin-cors
-* Run `go run main.go` from `server/fib-app-server` to start the server on localhost:8080
+* Run `yarn` to install dependencies
+* Run `yarn build` to bundle the app into static files
+* Run `go run main.go` to start the Go server and load the app on localhost:8080
 
 ## Contribution Requirements
 
