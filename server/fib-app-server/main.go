@@ -9,7 +9,7 @@ import (
 
 func main() {
   // Set the router as the default one shipped with Gin
-	router := gin.Default()
+  router := gin.Default()
 
   // Serve frontend static files
   router.Use(static.Serve("/", static.LocalFile("./views/js", true)))
@@ -26,14 +26,14 @@ func main() {
   api := router.Group("/api")
   {
     api.GET("/", func(c *gin.Context) {
-      c.JSON(http.StatusOK, gin.H {
+        c.JSON(http.StatusOK, gin.H {
         "message": "pong",
       })
-		})
+    })
   }
   api.GET("/fibonacci/:num", FibHandler)
 
-	// Start and run the server
+  // Start and run the server
   router.Run(":8080")
 }
 
