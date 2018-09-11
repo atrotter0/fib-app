@@ -6,6 +6,11 @@
 
 A simple React app that retrieves the values of the Fibonacci sequence up to an inputted value from an external API.
 
+## User Stories
+
+* As a user, I should be able to enter a number and view the results of a sequence of Fibonacci numbers up to my inputted number.
+* As a user, I should be able to navigate to the API endpoint `/fibonacci/num` (where num is some integer) and view the JSON results of the API response.
+
 ## Setup on OSX
 
 * Install Node.js
