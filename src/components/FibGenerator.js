@@ -88,7 +88,7 @@ class FibGenerator extends React.Component {
             </Button>
             {this.state.resultsVisible && (
               <div style={resultsStyles}>
-                <p style={resultsStyles}>{this.state.fibResults}</p>
+                <p>{this.state.fibResults}</p>
               </div>
             )}
           </Paper>
