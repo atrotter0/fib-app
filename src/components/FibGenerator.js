@@ -43,7 +43,7 @@ class FibGenerator extends React.Component {
     });
   }
 
-  displayResuts = () => {
+  displayResults = () => {
     this.setState(() => ({resultsVisible: true}))
   }
 
