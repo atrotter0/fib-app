@@ -48,21 +48,32 @@ class FibGenerator extends React.Component {
   }
 
   updateResults = (response) => {
-    const parsedResponse = JSON.parse(response);
-    this.setState(() => ({fibResults: parsedResponse}));
+    const formattedResponse = this.parseAndFormat(response);
+    this.setState(() => ({fibResults: formattedResponse}));
+  }
+
+  parseAndFormat(response) {
+    response = JSON.parse(response);
+    return response.toString().split(',').join(', ');
   }
 
   render() {
     const paperStyles = {
       width: '50%',
       maxWidth: '500px',
-      height: '200px',
+      minHeight: '200px',
       margin: '20px auto',
       padding: '20px',
       textAlign: 'center'
     }
     const buttonStyles = {
       marginTop: '20px'
+    }
+    const resultsStyles = {
+      marginTop: '20px',
+      width: '100%',
+      display: 'flex',
+      flexWrap: 'wrap'
     }
     return(
       <div>
@@ -76,8 +87,8 @@ class FibGenerator extends React.Component {
               Generate
             </Button>
             {this.state.resultsVisible && (
-              <div>
-                <p>{this.state.fibResults}</p>
+              <div style={resultsStyles}>
+                <p style={resultsStyles}>{this.state.fibResults}</p>
               </div>
             )}
           </Paper>
