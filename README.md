@@ -23,7 +23,7 @@ A simple React app that retrieves the values of the Fibonacci sequence up to an 
   * `go get -u github.com/itsjamie/gin-cors`
 * Run `go run main.go` to start the Go server and load the app on localhost:8080
 
-** Note: ** When hitting the endpoint `/api/fibonacci/:num`, you may need to refresh and override cache (cmd + shift + r to view) the API results.
+** Note: ** When hitting the endpoint `/api/fibonacci/:num`, you may need to refresh and override cache (cmd + shift + r) to view the API results.
 
 ## Contribution Requirements
 
