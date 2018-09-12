@@ -5,6 +5,7 @@ import (
   "github.com/gin-gonic/contrib/static"
   "github.com/gin-gonic/gin"
   "github.com/itsjamie/gin-cors"
+  "strconv"
 )
 
 func main() {
@@ -12,7 +13,7 @@ func main() {
   router := gin.Default()
 
   // Serve frontend static files
-  router.Use(static.Serve("/", static.LocalFile("./views/js", true)))
+  router.Use(static.Serve("/", static.LocalFile("./build/", true)))
   router.Use(cors.Middleware(cors.Config{
     Origins:        "*",
     Methods:        "GET, PUT, POST, DELETE",
@@ -26,7 +27,7 @@ func main() {
   api := router.Group("/api")
   {
     api.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H {
+      c.JSON(http.StatusOK, gin.H {
         "message": "pong",
       })
     })
@@ -38,8 +39,24 @@ func main() {
 }
 
 func FibHandler(c *gin.Context) {
-  c.Header("Content-Type", "application/json")
-  c.JSON(http.StatusOK, gin.H {
-    "message":"Returning a response",
-  })
+  if num, err := strconv.Atoi(c.Param("num")); err == nil {
+    var fib = generateFibonacci(num)
+    c.JSON(http.StatusOK, fib)
+  } else {
+    c.AbortWithStatus(http.StatusNotFound)
+  }
+}
+
+func generateFibonacci(num int) []int {
+  fib := make([]int, num)
+  for i := 0; i < num; i++ {
+    if i == 0 {
+      fib[i] = 0
+    } else if i == 1 {
+      fib[i] = 1
+    } else {
+      fib[i] = fib[i-1] + fib[i-2]
+    }
+  }
+  return fib
 }
