@@ -23,7 +23,7 @@ class FibGenerator extends React.Component {
       this.updateResults(response);
       this.displayResults();
     }, (error) => {
-      //display error
+      alert("We encountered a problem with your request. Please try again.");
     });
   }
 
