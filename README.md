@@ -4,7 +4,7 @@
 
 ## Description
 
-A simple React app that retrieves the values of the Fibonacci sequence up to an inputted value.
+A simple Go/React app that retrieves the values of the Fibonacci sequence up to an inputted value.
 
 ## User Stories
 
@@ -14,16 +14,17 @@ A simple React app that retrieves the values of the Fibonacci sequence up to an 
 ## Setup on OSX
 
 * Install Node.js
+* Install Go
 * Clone the repo
 * Run `yarn` to install dependencies
 * Run `yarn build` to bundle the app into static files
-* Run the following commands to install go dependencies:
+* Run the following commands to install Go dependencies:
   * `go get -u github.com/gin-gonic/gin`
   * `go get -u github.com/gin-gonic/contrib/static`
   * `go get -u github.com/itsjamie/gin-cors`
 * Run `go run main.go` to start the Go server and load the app on localhost:8080
 
-**Note:** When manually hitting the endpoint `/api/fibonacci/:num`, you may need to refresh and override cache (cmd + shift + r) to view the API results.
+**Note:** When manually hitting the endpoint `/api/fibonacci/:num`, you may need to refresh and override cache (cmd + shift + r) to view the API results due to browser cacheing.
 
 ## Contribution Requirements
 
